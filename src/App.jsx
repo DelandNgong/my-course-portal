@@ -1,3 +1,4 @@
+import { Toaster, toast } from 'react-hot-toast';
 import React, { useState, useEffect } from 'react';
 import { auth, db } from './firebase'; 
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged } from 'firebase/auth';
@@ -47,6 +48,7 @@ function App() {
       courseId: courseId,
       timestamp: new Date()
     });
+    toast.success('Successfully Enrolled!');
     setMyCourses([...myCourses, { regId: docRef.id, courseId }]);
   };
 
@@ -55,6 +57,7 @@ function App() {
       await deleteDoc(doc(db, "registrations", regId));
       setMyCourses(myCourses.filter(c => c.regId !== regId));
     }
+    toast.error('Course Dropped');
   };
 
   // Login Screen
@@ -202,6 +205,7 @@ function App() {
           </div>
         )}
       </main>
+      <Toaster position="top-center" />
     </div>
   );
 }
