@@ -1,16 +1,29 @@
-# React + Vite
+# DVN Academy - Student Enrollment Portal
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An automated, cloud-based course registration system built for the **IST 4035** class project.
 
-Currently, two official plugins are available:
+## Features
+- **Secure Authentication:** Email/Password login powered by Firebase.
+- **Course Catalog:** Dynamic listing of semester units.
+- **Real-time Registration:** Instant enrollment with Firestore synchronization.
+- **Student Dashboard:** Personal profile showing unique Student ID and total credit load.
+- **Responsive UI:** Fully mobile-friendly design using Tailwind CSS.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Technical Architecture
+- **Frontend:** React (Vite)
+- **Styling:** Tailwind CSS (v4)
+- **Database:** Google Cloud Firestore (NoSQL)
+- **Auth:** Firebase Authentication
+- **Hosting:** Vercel
 
-## React Compiler
+## System Logic
+1. **User Flow:** User registers -> Firebase Auth creates a unique `uid`.
+2. **Data Model:** - `Courses`: Static array in the frontend (can be migrated to Firestore).
+   - `Registrations`: Collection in Firestore linking `studentId` to `courseId`.
+3. **Security:** Implemented RemoteSigned execution policies for environment setup and Firebase Test Mode for rapid prototyping.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Installation & Setup
+1. Clone the repo: `git clone https://github.com/DelandNgong/my-course-portal`
+2. Install dependencies: `npm install`
+3. Start development server: `npm run dev`
+4. Build for production: `npm run build`
